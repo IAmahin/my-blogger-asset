@@ -1,0 +1,267 @@
+
+        /* CSS Variables for Theming */
+        :root {
+            --background-color: #1E1E2F;
+            --text-color: #EAEAEA;
+            --header-background: #2B2D42;
+            --accent-color: #FFD700;
+            --card-background: #3A3D5B;
+            --hover-accent: #E6C200;
+            --hover-text: #1E1E2F;
+            --soft-shadow: rgba(255, 215, 0, 0.2);
+            --border-color: #4b4e6d;
+            --neon-pink: #F433FF;
+            --danger-color: #e53935;
+            --danger-hover-color: #c62828;
+            --disabled-color: #555877;
+        }
+
+        /* Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html, body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            overscroll-behavior: contain;
+        }
+
+        /* Header Styling */
+        .site-header {
+            background-color: var(--header-background);
+            padding: 1rem 1.5rem;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            border-bottom: 3px solid var(--accent-color);
+        }
+
+        .site-header h1 {
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: var(--accent-color);
+            text-shadow: 0 0 10px var(--soft-shadow);
+        }
+
+        /* Main Content & Tool Grid */
+        .main-content {
+            padding: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .tool-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+
+        /* Tool Card Styling */
+        .tool-card {
+            background-color: var(--card-background);
+            border-radius: 8px;
+            padding: 2rem;
+            text-align: center;
+            cursor: pointer;
+            border: 1px solid transparent;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease, background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .tool-card:hover {
+            transform: translateY(-10px);
+            background-color: var(--accent-color);
+            color: var(--hover-text);
+            box-shadow: 0 15px 30px var(--soft-shadow);
+        }
+
+        .tool-card .icon { font-size: 3rem; margin-bottom: 1rem; }
+        .tool-card h3 { font-size: 1.5rem; margin-bottom: 0.5rem; font-weight: 600; }
+
+        /* General Button Styling */
+        .btn {
+            background-color: var(--accent-color);
+            color: var(--hover-text);
+            border: none;
+            padding: 0.8rem 1.2rem;
+            font-size: 1rem;
+            font-weight: bold;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, opacity 0.3s ease;
+            text-align: center;
+            width: 100%;
+        }
+
+        .btn:hover { background-color: var(--hover-accent); }
+        
+        .btn-secondary {
+            background-color: var(--card-background);
+            color: var(--text-color);
+        }
+        
+        .btn-secondary:hover { background-color: var(--border-color); }
+        
+        .btn-danger {
+            background-color: var(--danger-color);
+            color: white;
+        }
+        .btn-danger:hover {
+            background-color: var(--danger-hover-color);
+        }
+        
+        .btn:disabled {
+            background-color: var(--disabled-color);
+            cursor: not-allowed;
+            color: #9e9e9e;
+        }
+
+
+        /* --- Photo Frame Editor Specific Styles --- */
+        .photo-frame-tool {
+            display: none; /* Hidden by default */
+            padding: 1.5rem;
+            background-color: var(--header-background);
+            border-radius: 8px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+        }
+        
+        .editor-container {
+            display: flex;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .controls { flex: 1; min-width: 300px; }
+        .canvas-container { flex: 2; min-width: 300px; text-align: center; }
+        
+        #photo-canvas {
+            max-width: 100%;
+            height: auto;
+            border: 2px dashed var(--accent-color);
+            background-color: #1a1a2a;
+            border-radius: 5px;
+            cursor: grab;
+        }
+        
+        .control-group { margin-bottom: 1.5rem; }
+        
+        .control-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: var(--accent-color);
+        }
+
+        .control-group input[type="file"],
+        .control-group input[type="text"],
+        .control-group select,
+        .control-group textarea {
+            width: 100%;
+            padding: 0.7rem;
+            border-radius: 5px;
+            border: 1px solid var(--border-color);
+            background-color: var(--background-color);
+            color: var(--text-color);
+            font-size: 1rem;
+        }
+        
+        textarea#textInput {
+            resize: vertical;
+            min-height: 50px;
+        }
+
+        .input-group { display: flex; gap: 10px; margin-top: 0.5rem; align-items: center; }
+        .input-group .btn { width: auto; flex-shrink: 0; }
+        .input-group input, .input-group select, .input-group textarea { flex-grow: 1; }
+        
+        input[type="color"] {
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+            width: 45px;
+            height: 45px;
+            padding: 0;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            background-color: transparent;
+        }
+        input[type="color"]::-webkit-color-swatch-wrapper { padding: 0; border-radius: 50%;}
+        input[type="color"]::-webkit-color-swatch { border: 2px solid var(--border-color); border-radius: 50%;}
+
+
+        .actions-group {
+            margin-top: 1rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0.5rem;
+        }
+
+        .download-actions {
+            margin-top: 1rem;
+            display: flex;
+            gap: 1rem;
+            flex-direction: column;
+        }
+
+        /* Toggle Switch Styling */
+        .toggle-switch { display: flex; align-items: center; gap: 10px; margin-top: 0.5rem; }
+        .toggle-switch span { user-select: none; }
+        .switch { position: relative; display: inline-block; width: 50px; height: 28px; }
+        .switch input { opacity: 0; width: 0; height: 0; }
+        .slider { position: absolute; cursor: pointer; top: 0; left: 0; right: 0; bottom: 0; background-color: var(--card-background); transition: .4s; border-radius: 28px; }
+        .slider:before { position: absolute; content: ""; height: 20px; width: 20px; left: 4px; bottom: 4px; background-color: white; transition: .4s; border-radius: 50%; }
+        input:checked + .slider { background-color: var(--accent-color); }
+        input:checked + .slider:before { transform: translateX(22px); }
+
+        #dualPhotoControls { display: none; margin-top: 1rem; }
+
+        /* --- Template Modal --- */
+        .modal {
+            display: none; position: fixed; z-index: 1000; left: 0; top: 0;
+            width: 100%; height: 100%; overflow: auto; background-color: rgba(0,0,0,0.7);
+        }
+        .modal-content {
+            background-color: var(--header-background);
+            margin: 10% auto; padding: 20px; border: 1px solid var(--accent-color);
+            width: 90%; max-width: 800px; border-radius: 8px;
+        }
+        .modal-header { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border-color); padding-bottom: 1rem; }
+        .modal-header h2 { color: var(--accent-color); }
+        .close-btn { color: #aaa; font-size: 28px; font-weight: bold; cursor: pointer; }
+
+        #modal-upload-area {
+            margin-bottom: 1.5rem;
+        }
+        #modal-upload-area .btn {
+            width: 100%;
+        }
+
+        .template-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); gap: 1rem; }
+        .template-item { cursor: pointer; border: 2px solid transparent; border-radius: 5px; transition: border-color 0.3s; }
+        .template-item img { width: 100%; height: auto; display: block; border-radius: 3px; }
+        .template-item:hover { border-color: var(--accent-color); }
+        .text-template-item { background: var(--card-background); padding: 1rem; text-align: center; font-size: 1.2rem; }
+
+
+        /* Footer */
+        .site-footer-credit {
+            text-align: center;
+            padding: 1.5rem;
+            margin-top: 2rem;
+            background-color: var(--header-background);
+            color: var(--text-color);
+            font-size: 0.9rem;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .site-header h1 { font-size: 1.8rem; }
+            .main-content, .photo-frame-tool { padding: 1rem; }
+            .editor-container { flex-direction: column; }
+        }
